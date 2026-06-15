@@ -1,6 +1,6 @@
-# Encuesta para invitar a Micaela
+# Encuesta para Micaela - Responsive
 
-Página simple tipo encuesta para GitHub Pages.
+Versión optimizada para iOS y Android.
 
 ## Archivos
 - index.html
@@ -15,11 +15,11 @@ En `script.js`, buscá:
 const phone = "";
 ```
 
-y reemplazalo por tu número con código país, por ejemplo:
+y poné tu número con código país, por ejemplo:
 
 ```js
 const phone = "549261XXXXXXXX";
 ```
 
-## Subir a GitHub Pages
-Subí todos los archivos a la raíz del repositorio y activá GitHub Pages desde Settings > Pages.
+## GitHub Pages
+Subí todos los archivos a la raíz del repositorio y activá Pages desde Settings > Pages.

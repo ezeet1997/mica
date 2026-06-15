@@ -17,6 +17,7 @@ function showStep(step){
   const visibleStep = Math.min(step, 5);
   stepText.textContent = step === 6 ? "Resultado final" : `Paso ${visibleStep} de 5`;
   barFill.style.width = step === 6 ? "100%" : `${(visibleStep / 5) * 100}%`;
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function buildMessage(){
@@ -41,7 +42,7 @@ function renderResult(){
   const msg = buildMessage();
   document.getElementById("message").value = msg;
 
-  // Agregá tu número con código país, ejemplo Argentina: 549261XXXXXXX
+  // Agregá tu número con código país. Ejemplo Argentina: 549261XXXXXXX
   const phone = "";
   document.getElementById("waBtn").href = phone
     ? `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`
@@ -67,10 +68,14 @@ document.querySelectorAll(".options").forEach(group => {
 });
 
 document.getElementById("copyBtn").addEventListener("click", async () => {
-  await navigator.clipboard.writeText(document.getElementById("message").value);
-  const btn = document.getElementById("copyBtn");
-  btn.textContent = "Copiado ✓";
-  setTimeout(() => btn.textContent = "Copiar mensaje", 1400);
+  try {
+    await navigator.clipboard.writeText(document.getElementById("message").value);
+    const btn = document.getElementById("copyBtn");
+    btn.textContent = "Copiado ✓";
+    setTimeout(() => btn.textContent = "Copiar mensaje", 1400);
+  } catch {
+    document.getElementById("message").select();
+  }
 });
 
 document.getElementById("restartBtn").addEventListener("click", () => {

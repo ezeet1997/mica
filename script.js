@@ -20,7 +20,11 @@ function showStep(step){
   stepText.textContent = step === 6 ? "Ticket generado" : `Paso ${visible} de 5`;
   barFill.style.width = step === 6 ? "100%" : `${(visible/5)*100}%`;
   if(step === 3) renderCalendar();
-  window.scrollTo({top:0,behavior:"smooth"});
+  
+  if(step !== 3){
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+
 }
 
 function formatDate(date){

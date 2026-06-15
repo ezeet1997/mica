@@ -304,3 +304,110 @@ textarea{
   .actions{grid-template-columns:1fr}
   textarea{min-height:170px}
 }
+
+
+/* FIX calendario en celular */
+html, body{
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+.card{
+  overflow:visible;
+}
+
+.content{
+  overflow:visible;
+}
+
+@media(max-width:520px){
+  body{
+    overflow-y:auto;
+  }
+
+  .phone-shell{
+    min-height:auto;
+  }
+
+  .card{
+    min-height:auto;
+    overflow:visible;
+  }
+
+  .top-photo{
+    height:24dvh;
+    min-height:170px;
+    max-height:220px;
+  }
+
+  .content{
+    overflow:visible;
+    padding-top:18px;
+  }
+
+  .calendar-box{
+    margin-top:14px;
+    padding:10px;
+    border-radius:18px;
+  }
+
+  .calendar-top{
+    grid-template-columns:38px 1fr 38px;
+    gap:6px;
+    margin-bottom:8px;
+  }
+
+  .calendar-top button{
+    height:38px;
+    border-radius:12px;
+  }
+
+  .calendar-top strong{
+    font-size:15px;
+  }
+
+  .weekdays,
+  .calendar{
+    gap:4px;
+  }
+
+  .weekdays span{
+    font-size:10px;
+    padding:3px 0;
+  }
+
+  .day{
+    min-height:34px;
+    border-radius:10px;
+    font-size:13px;
+  }
+
+  .light-btn{
+    margin-top:10px;
+  }
+}
+
+@media(max-width:380px){
+  .top-photo{
+    height:21dvh;
+    min-height:145px;
+  }
+
+  h2{
+    font-size:30px;
+  }
+
+  .content{
+    padding-left:14px;
+    padding-right:14px;
+  }
+
+  .day{
+    min-height:31px;
+    font-size:12px;
+  }
+
+  .calendar-box{
+    padding:8px;
+  }
+}

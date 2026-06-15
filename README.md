@@ -1,24 +1,25 @@
-# Invitación para Micaela
+# Encuesta para invitar a Micaela
 
-Landing page simple para invitar a salir a Micaela Durán.
+Página simple tipo encuesta para GitHub Pages.
 
 ## Archivos
+- index.html
+- styles.css
+- script.js
+- micaela.webp
 
-- `index.html`
-- `styles.css`
-- `script.js`
+## Personalizar WhatsApp
+En `script.js`, buscá:
 
-## Cómo subir a GitHub Pages
+```js
+const phone = "";
+```
 
-1. Crear un repositorio nuevo en GitHub.
-2. Subir estos archivos en la raíz del repositorio.
-3. Ir a **Settings > Pages**.
-4. En **Source**, elegir `Deploy from a branch`.
-5. Elegir rama `main` y carpeta `/root`.
-6. Guardar.
+y reemplazalo por tu número con código país, por ejemplo:
 
-## Personalización rápida
+```js
+const phone = "549261XXXXXXXX";
+```
 
-- Cambiar el número de WhatsApp en `script.js`, variable `phone`.
-- Reemplazar el bloque `Tu foto acá` por una imagen cuando tengas la foto.
-- Editar los planes desde `index.html`.
+## Subir a GitHub Pages
+Subí todos los archivos a la raíz del repositorio y activá GitHub Pages desde Settings > Pages.

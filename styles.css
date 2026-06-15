@@ -432,3 +432,31 @@ html, body{
     padding-right:14px;
   }
 }
+
+
+/* Música */
+.sound-btn{
+  width:100%;
+  min-height:54px;
+  border:2px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+  color:var(--dark);
+  font-weight:900;
+  font-size:16px;
+  cursor:pointer;
+  margin-bottom:12px;
+}
+
+.sound-btn.playing{
+  background:var(--soft);
+  border-color:var(--accent);
+}
+
+@media(max-width:520px){
+  .sound-btn{
+    width:100%;
+    min-height:54px;
+    border-radius:16px;
+  }
+}

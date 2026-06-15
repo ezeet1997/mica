@@ -16,3 +16,11 @@ y poné tu número con código país, por ejemplo:
 ```js
 const phone = "549261XXXXXXXX";
 ```
+
+
+## Cambios agregados
+- Opción nueva de plan: Cine 🎬
+- Música de fondo con el archivo `cancion.weba`
+- Botón “Activar música” para que funcione en iOS y Android
+
+Nota: en celulares, por seguridad del navegador, la música no puede arrancar sola sin que la persona toque un botón. Por eso se activa al tocar “Activar música” o “Empezar”.

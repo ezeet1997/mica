@@ -1,6 +1,13 @@
-# Pasaporte de salida - Micaela
+# Encuesta para Micaela con calendario
 
-Otro diseño bonito, más delicado, tipo pasaporte/turismo + encuesta.
+Versión responsive para iOS y Android, con calendario real en la pregunta:
+"¿Qué día te queda mejor?"
+
+## Archivos
+- index.html
+- styles.css
+- script.js
+- micaela.webp
 
 ## Personalizar WhatsApp
 En `script.js`, buscá:
@@ -9,11 +16,18 @@ En `script.js`, buscá:
 const phone = "";
 ```
 
-y reemplazalo por tu número con código país.
+y poné tu número con código país, por ejemplo:
+
+```js
+const phone = "549261XXXXXXXX";
+```
+
+## GitHub Pages
+Subí todos los archivos a la raíz del repositorio y activá Pages desde Settings > Pages.
 
 
-## Fix aplicado
-- Calendario optimizado para pantallas chicas.
-- La página ahora permite scroll vertical en celular.
-- Foto superior reducida en mobile para que el calendario entre completo.
-- Días del calendario más compactos para iOS y Android.
+## Corrección mobile calendario
+- Mantiene el diseño de la primera versión.
+- Calendario más compacto en celular.
+- Permite scroll vertical en iOS y Android.
+- Foto superior reducida para que el calendario no quede cortado.

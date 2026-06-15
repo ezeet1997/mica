@@ -3,110 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#f6efe8" />
-  <title>Pasaporte de salida | Micaela</title>
+  <meta name="theme-color" content="#171014" />
+  <title>Encuesta para Micaela</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="phone-shell">
-    <section class="card">
-      <div class="top-photo">
-        <img src="micaela.webp" alt="Micaela">
-        <div class="stamp">MICA<br>DURÁN</div>
-      </div>
+  <main class="app">
+    <section class="panel">
+      <div class="photo" aria-label="Foto de Micaela"></div>
 
-      <div class="content">
+      <div class="survey">
         <div class="progress">
           <span id="stepText">Paso 1 de 5</span>
           <div class="bar"><div id="barFill"></div></div>
         </div>
 
-        <section class="step active" data-step="1">
-          <p class="kicker">Pasaporte de salida</p>
-          <h1>Mica, te dejo elegir el destino.</h1>
+        <div class="step active" data-step="1">
+          <p class="tag">Encuesta oficial</p>
+          <h1>Mica, necesito resolver un problema de agenda 😄</h1>
           <p class="desc">
-            Como coordinar fecha viene siendo una misión turística avanzada,
-            armé esta mini encuesta para encontrar el plan ideal.
+            Como cada vez que propongo un día justo tenés otro plan,
+            hice esta mini encuesta para que elijas vos.
           </p>
-          <div class="passport-info">
-            <span>Destino: primera salida</span>
-            <span>Estado: pendiente de aprobación</span>
-          </div>
-          <button class="main-btn next">Iniciar encuesta</button>
-        </section>
+          <button class="next">Empezar</button>
+        </div>
 
-        <section class="step" data-step="2">
-          <p class="kicker">Destino gastronómico</p>
-          <h2>¿Qué plan elegís?</h2>
+        <div class="step" data-step="2">
+          <p class="tag">Pregunta 1</p>
+          <h2>¿Qué plan te gustaría más?</h2>
           <div class="options" data-key="plan">
-            <button data-value="Hamburguesas 🍔"><b>🍔 Hamburguesas</b><small>Plan fuerte, sin vueltas.</small></button>
-            <button data-value="Helado 🍦"><b>🍦 Helado</b><small>Simple, dulce y tranqui.</small></button>
-            <button data-value="Café ☕"><b>☕ Café</b><small>Charla relajada.</small></button>
-            <button data-value="Plan sorpresa ✨"><b>✨ Sorpresa</b><small>Vos ponés fecha, yo organizo.</small></button>
+            <button data-value="Hamburguesas 🍔">Hamburguesas 🍔</button>
+            <button data-value="Helado 🍦">Helado 🍦</button>
+            <button data-value="Café ☕">Café ☕</button>
+            <button data-value="Plan sorpresa ✨">Plan sorpresa ✨</button>
           </div>
-        </section>
+        </div>
 
-        <section class="step" data-step="3">
-          <p class="kicker">Fecha de embarque</p>
-          <h2>Elegí el día</h2>
+        <div class="step" data-step="3">
+          <p class="tag">Pregunta 2</p>
+          <h2>¿Qué día te queda mejor?</h2>
 
           <div class="calendar-box">
             <div class="calendar-top">
-              <button id="prevMonth" type="button">‹</button>
+              <button id="prevMonth" type="button" aria-label="Mes anterior">‹</button>
               <strong id="monthLabel"></strong>
-              <button id="nextMonth" type="button">›</button>
+              <button id="nextMonth" type="button" aria-label="Mes siguiente">›</button>
             </div>
+
             <div class="weekdays">
-              <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+              <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
             </div>
+
             <div class="calendar" id="calendar"></div>
           </div>
 
-          <button class="light-btn" id="otherDayBtn" type="button">Lo hablamos y elegimos otra fecha</button>
-        </section>
+          <button class="other-day" id="otherDayBtn" type="button">Prefiero otro día / lo hablamos</button>
+        </div>
 
-        <section class="step" data-step="4">
-          <p class="kicker">Horario</p>
-          <h2>¿Cuándo te queda mejor?</h2>
+        <div class="step" data-step="4">
+          <p class="tag">Pregunta 3</p>
+          <h2>¿En qué horario?</h2>
           <div class="options" data-key="horario">
-            <button data-value="Tarde"><b>🌤️ Tarde</b><small>Algo tranquilo.</small></button>
-            <button data-value="Noche"><b>🌙 Noche</b><small>Más salida oficial.</small></button>
-            <button data-value="Cuando vos puedas"><b>🗓️ Cuando vos puedas</b><small>Agenda flexible.</small></button>
+            <button data-value="Tarde">Tarde</button>
+            <button data-value="Noche">Noche</button>
+            <button data-value="Cuando vos puedas">Cuando vos puedas</button>
           </div>
-        </section>
+        </div>
 
-        <section class="step" data-step="5">
-          <p class="kicker">Confirmación</p>
+        <div class="step" data-step="5">
+          <p class="tag">Última pregunta</p>
           <h2>¿Aceptás la invitación?</h2>
           <div class="options" data-key="respuesta">
-            <button data-value="Sí, acepto 😄"><b>✅ Sí, acepto</b><small>Aprobado el plan.</small></button>
-            <button data-value="Acepto, pero negociemos fecha 😅"><b>😅 Acepto, pero negociemos</b><small>Clásico de agendas ocupadas.</small></button>
+            <button data-value="Sí, acepto 😄">Sí, acepto 😄</button>
+            <button data-value="Acepto, pero negociemos fecha 😅">Acepto, pero negociemos fecha 😅</button>
           </div>
-        </section>
+        </div>
 
-        <section class="step" data-step="6">
-          <p class="kicker">Ticket generado</p>
-          <h2>Salida lista para coordinar</h2>
-
-          <div class="ticket">
-            <p><span>Plan</span><b id="rPlan"></b></p>
-            <p><span>Día</span><b id="rDia"></b></p>
-            <p><span>Horario</span><b id="rHorario"></b></p>
-            <p><span>Respuesta</span><b id="rRespuesta"></b></p>
+        <div class="step" data-step="6">
+          <p class="tag">Resultado</p>
+          <h2>Listo, propuesta armada</h2>
+          <div class="result">
+            <p><strong>Plan:</strong> <span id="rPlan"></span></p>
+            <p><strong>Día:</strong> <span id="rDia"></span></p>
+            <p><strong>Horario:</strong> <span id="rHorario"></span></p>
+            <p><strong>Respuesta:</strong> <span id="rRespuesta"></span></p>
           </div>
 
           <textarea id="message" readonly></textarea>
 
           <div class="actions">
-            <button id="copyBtn">Copiar</button>
-            <a id="waBtn" target="_blank" rel="noopener">WhatsApp</a>
+            <button id="copyBtn">Copiar mensaje</button>
+            <a id="waBtn" target="_blank" rel="noopener">Enviar por WhatsApp</a>
           </div>
 
           <button class="restart" id="restartBtn">Cambiar respuestas</button>
-        </section>
+        </div>
       </div>
     </section>
   </main>

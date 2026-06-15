@@ -1,13 +1,8 @@
-# Encuesta para Micaela con calendario
+# Encuesta para Micaela - calendario corregido
 
-Versión responsive para iOS y Android, con calendario real en la pregunta:
-"¿Qué día te queda mejor?"
+Esta versión mantiene el primer diseño, pero cambia el calendario por el selector nativo de fecha del teléfono.
 
-## Archivos
-- index.html
-- styles.css
-- script.js
-- micaela.webp
+Esto evita el problema de que el calendario no se vea o no deje avanzar en iOS/Android.
 
 ## Personalizar WhatsApp
 En `script.js`, buscá:
@@ -21,13 +16,3 @@ y poné tu número con código país, por ejemplo:
 ```js
 const phone = "549261XXXXXXXX";
 ```
-
-## GitHub Pages
-Subí todos los archivos a la raíz del repositorio y activá Pages desde Settings > Pages.
-
-
-## Corrección mobile calendario
-- Mantiene el diseño de la primera versión.
-- Calendario más compacto en celular.
-- Permite scroll vertical en iOS y Android.
-- Foto superior reducida para que el calendario no quede cortado.

@@ -2,14 +2,7 @@ const steps = document.querySelectorAll(".step");
 const stepText = document.getElementById("stepText");
 const barFill = document.getElementById("barFill");
 
-const monthLabel = document.getElementById("monthLabel");
-const calendar = document.getElementById("calendar");
-const prevMonth = document.getElementById("prevMonth");
-const nextMonth = document.getElementById("nextMonth");
-const otherDayBtn = document.getElementById("otherDayBtn");
-
 let currentStep = 1;
-let calendarDate = new Date();
 
 const answers = {
   plan: "",
@@ -17,11 +10,6 @@ const answers = {
   horario: "",
   respuesta: ""
 };
-
-const monthNames = [
-  "enero", "febrero", "marzo", "abril", "mayo", "junio",
-  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
-];
 
 function showStep(step){
   currentStep = step;
@@ -31,15 +19,13 @@ function showStep(step){
   stepText.textContent = step === 6 ? "Resultado final" : `Paso ${visibleStep} de 5`;
   barFill.style.width = step === 6 ? "100%" : `${(visibleStep / 5) * 100}%`;
 
-  if(step === 3) renderCalendar();
-  
-  if(step !== 3){
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function formatDate(date){
+function formatInputDate(value){
+  if(!value) return "";
+  const [year, month, day] = value.split("-");
+  const date = new Date(Number(year), Number(month) - 1, Number(day));
   return date.toLocaleDateString("es-AR", {
     weekday: "long",
     day: "numeric",
@@ -48,58 +34,15 @@ function formatDate(date){
   });
 }
 
-function sameDay(a,b){
-  return a.getFullYear() === b.getFullYear()
-    && a.getMonth() === b.getMonth()
-    && a.getDate() === b.getDate();
-}
+function setMinDate(){
+  const input = document.getElementById("dateInput");
+  if(!input) return;
 
-function renderCalendar(){
-  calendar.innerHTML = "";
-
-  const year = calendarDate.getFullYear();
-  const month = calendarDate.getMonth();
-
-  monthLabel.textContent = `${monthNames[month]} ${year}`;
-
-  const firstDay = new Date(year, month, 1);
-  const lastDay = new Date(year, month + 1, 0);
-  const firstWeekday = (firstDay.getDay() + 6) % 7;
   const today = new Date();
-  today.setHours(0,0,0,0);
-
-  for(let i = 0; i < firstWeekday; i++){
-    const empty = document.createElement("button");
-    empty.className = "day empty";
-    empty.type = "button";
-    empty.disabled = true;
-    calendar.appendChild(empty);
-  }
-
-  for(let day = 1; day <= lastDay.getDate(); day++){
-    const date = new Date(year, month, day);
-    date.setHours(0,0,0,0);
-
-    const btn = document.createElement("button");
-    btn.className = "day";
-    btn.type = "button";
-    btn.textContent = day;
-
-    if(sameDay(date, today)) btn.classList.add("today");
-    if(date < today){
-      btn.classList.add("past");
-      btn.disabled = true;
-    }
-
-    if(answers.dia === formatDate(date)) btn.classList.add("selected");
-
-    btn.addEventListener("click", () => {
-      answers.dia = formatDate(date);
-      showStep(4);
-    });
-
-    calendar.appendChild(btn);
-  }
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const dd = String(today.getDate()).padStart(2, "0");
+  input.min = `${yyyy}-${mm}-${dd}`;
 }
 
 function buildMessage(){
@@ -149,17 +92,20 @@ document.querySelectorAll(".options").forEach(group => {
   });
 });
 
-prevMonth.addEventListener("click", () => {
-  calendarDate.setMonth(calendarDate.getMonth() - 1);
-  renderCalendar();
+document.getElementById("continueDateBtn").addEventListener("click", () => {
+  const input = document.getElementById("dateInput");
+  const formatted = formatInputDate(input.value);
+
+  if(!formatted){
+    input.focus();
+    return;
+  }
+
+  answers.dia = formatted;
+  showStep(4);
 });
 
-nextMonth.addEventListener("click", () => {
-  calendarDate.setMonth(calendarDate.getMonth() + 1);
-  renderCalendar();
-});
-
-otherDayBtn.addEventListener("click", () => {
+document.getElementById("otherDayBtn").addEventListener("click", () => {
   answers.dia = "Otro día / lo hablamos";
   showStep(4);
 });
@@ -180,8 +126,9 @@ document.getElementById("restartBtn").addEventListener("click", () => {
   answers.dia = "";
   answers.horario = "";
   answers.respuesta = "";
-  calendarDate = new Date();
+  document.getElementById("dateInput").value = "";
   showStep(1);
 });
 
+setMinDate();
 showStep(1);

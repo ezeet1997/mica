@@ -46,18 +46,10 @@
           <p class="tag">Pregunta 2</p>
           <h2>¿Qué día te queda mejor?</h2>
 
-          <div class="calendar-box">
-            <div class="calendar-top">
-              <button id="prevMonth" type="button" aria-label="Mes anterior">‹</button>
-              <strong id="monthLabel"></strong>
-              <button id="nextMonth" type="button" aria-label="Mes siguiente">›</button>
-            </div>
-
-            <div class="weekdays">
-              <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
-            </div>
-
-            <div class="calendar" id="calendar"></div>
+          <div class="date-box">
+            <label for="dateInput">Seleccioná una fecha</label>
+            <input id="dateInput" type="date" />
+            <button class="continue-date" id="continueDateBtn" type="button">Continuar</button>
           </div>
 
           <button class="other-day" id="otherDayBtn" type="button">Prefiero otro día / lo hablamos</button>

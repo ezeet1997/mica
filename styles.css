@@ -326,23 +326,62 @@ textarea{
 }
 
 
-/* FIX calendario en celular - primer diseño */
+/* FIX DEFINITIVO calendario mobile: usa selector nativo iOS/Android */
 html, body{
   overflow-x:hidden;
   overflow-y:auto;
 }
 
-.panel{
+.panel,
+.survey{
   overflow:visible;
 }
 
-.survey{
-  overflow:visible;
+.date-box{
+  margin-top:24px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:18px;
+  display:grid;
+  gap:12px;
+}
+
+.date-box label{
+  color:var(--muted);
+  font-weight:800;
+  font-size:14px;
+}
+
+.date-box input{
+  width:100%;
+  min-height:58px;
+  border:2px solid var(--line);
+  border-radius:18px;
+  padding:0 16px;
+  background:#fff8f4;
+  color:var(--dark);
+  font:800 17px Inter,system-ui,sans-serif;
+  -webkit-appearance:none;
+  appearance:none;
+}
+
+.continue-date{
+  width:100%;
+  min-height:56px;
+  border:0;
+  border-radius:18px;
+  background:var(--dark);
+  color:white;
+  font-weight:900;
+  font-size:16px;
+  cursor:pointer;
 }
 
 @media(max-width:520px){
   body{
     overflow-y:auto;
+    background:var(--card);
   }
 
   .app{
@@ -365,47 +404,16 @@ html, body{
     padding-top:18px;
   }
 
-  .calendar-box{
-    margin-top:14px;
-    padding:10px;
-    border-radius:18px;
+  .date-box{
+    margin-top:18px;
+    padding:14px;
+    border-radius:20px;
   }
 
-  .calendar-top{
-    grid-template-columns:38px 1fr 38px;
-    gap:6px;
-    margin-bottom:8px;
-  }
-
-  .calendar-top button{
-    width:38px;
-    height:38px;
-    border-radius:12px;
-    font-size:24px;
-  }
-
-  .calendar-top strong{
-    font-size:15px;
-  }
-
-  .weekdays,
-  .calendar{
-    gap:4px;
-  }
-
-  .weekdays span{
-    font-size:10px;
-    padding:3px 0;
-  }
-
-  .day{
-    min-height:34px;
-    border-radius:10px;
-    font-size:13px;
-  }
-
-  .other-day{
-    margin-top:10px;
+  .date-box input,
+  .continue-date{
+    min-height:54px;
+    border-radius:16px;
   }
 }
 
@@ -422,14 +430,5 @@ html, body{
   .survey{
     padding-left:14px;
     padding-right:14px;
-  }
-
-  .calendar-box{
-    padding:8px;
-  }
-
-  .day{
-    min-height:31px;
-    font-size:12px;
   }
 }

@@ -24,3 +24,9 @@ const phone = "549261XXXXXXXX";
 - Botón “Activar música” para que funcione en iOS y Android
 
 Nota: en celulares, por seguridad del navegador, la música no puede arrancar sola sin que la persona toque un botón. Por eso se activa al tocar “Activar música” o “Empezar”.
+
+
+## Cambios finales
+- Se quitó el botón “Activar música”.
+- La canción `blue.mp3` se reproduce al tocar “Empezar”.
+- Se mantiene la opción Cine 🎬.

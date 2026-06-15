@@ -74,7 +74,30 @@ function renderResult(){
     : `https://wa.me/?text=${encodeURIComponent(msg)}`;
 }
 
-document.querySelector(".next").addEventListener("click", () => showStep(2));
+
+
+
+const bgMusic = document.getElementById("bgMusic");
+
+async function startMusic(){
+  if(!bgMusic) return;
+
+  try{
+    bgMusic.currentTime = 0;
+    bgMusic.volume = 0.55;
+    await bgMusic.play();
+  }catch(error){
+    // En algunos celulares puede bloquearse si el navegador no detecta el toque.
+    // Si pasa, al tocar otra parte de la página vuelve a intentar.
+    document.body.addEventListener("touchstart", () => bgMusic.play().catch(() => {}), { once:true });
+    document.body.addEventListener("click", () => bgMusic.play().catch(() => {}), { once:true });
+  }
+}
+
+document.querySelector(".next").addEventListener("click", async () => {
+  await startMusic();
+  showStep(2);
+});
 
 document.querySelectorAll(".options").forEach(group => {
   group.querySelectorAll("button").forEach(btn => {

@@ -460,3 +460,7 @@ html, body{
     border-radius:16px;
   }
 }
+
+
+/* Música: el botón fue removido. La canción blue.mp3 arranca al tocar Empezar. */
+.sound-btn{display:none!important;}

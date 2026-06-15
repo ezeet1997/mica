@@ -2,13 +2,26 @@ const steps = document.querySelectorAll(".step");
 const stepText = document.getElementById("stepText");
 const barFill = document.getElementById("barFill");
 
+const monthLabel = document.getElementById("monthLabel");
+const calendar = document.getElementById("calendar");
+const prevMonth = document.getElementById("prevMonth");
+const nextMonth = document.getElementById("nextMonth");
+const otherDayBtn = document.getElementById("otherDayBtn");
+
 let currentStep = 1;
+let calendarDate = new Date();
+
 const answers = {
   plan: "",
   dia: "",
   horario: "",
   respuesta: ""
 };
+
+const monthNames = [
+  "enero", "febrero", "marzo", "abril", "mayo", "junio",
+  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+];
 
 function showStep(step){
   currentStep = step;
@@ -17,7 +30,72 @@ function showStep(step){
   const visibleStep = Math.min(step, 5);
   stepText.textContent = step === 6 ? "Resultado final" : `Paso ${visibleStep} de 5`;
   barFill.style.width = step === 6 ? "100%" : `${(visibleStep / 5) * 100}%`;
+
+  if(step === 3) renderCalendar();
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function formatDate(date){
+  return date.toLocaleDateString("es-AR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+}
+
+function sameDay(a,b){
+  return a.getFullYear() === b.getFullYear()
+    && a.getMonth() === b.getMonth()
+    && a.getDate() === b.getDate();
+}
+
+function renderCalendar(){
+  calendar.innerHTML = "";
+
+  const year = calendarDate.getFullYear();
+  const month = calendarDate.getMonth();
+
+  monthLabel.textContent = `${monthNames[month]} ${year}`;
+
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
+  const firstWeekday = (firstDay.getDay() + 6) % 7;
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  for(let i = 0; i < firstWeekday; i++){
+    const empty = document.createElement("button");
+    empty.className = "day empty";
+    empty.type = "button";
+    empty.disabled = true;
+    calendar.appendChild(empty);
+  }
+
+  for(let day = 1; day <= lastDay.getDate(); day++){
+    const date = new Date(year, month, day);
+    date.setHours(0,0,0,0);
+
+    const btn = document.createElement("button");
+    btn.className = "day";
+    btn.type = "button";
+    btn.textContent = day;
+
+    if(sameDay(date, today)) btn.classList.add("today");
+    if(date < today){
+      btn.classList.add("past");
+      btn.disabled = true;
+    }
+
+    if(answers.dia === formatDate(date)) btn.classList.add("selected");
+
+    btn.addEventListener("click", () => {
+      answers.dia = formatDate(date);
+      showStep(4);
+    });
+
+    calendar.appendChild(btn);
+  }
 }
 
 function buildMessage(){
@@ -42,7 +120,7 @@ function renderResult(){
   const msg = buildMessage();
   document.getElementById("message").value = msg;
 
-  // Agregá tu número con código país. Ejemplo Argentina: 549261XXXXXXX
+  // Agregá tu número con código país. Ejemplo Argentina: 549261XXXXXXXX
   const phone = "";
   document.getElementById("waBtn").href = phone
     ? `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`
@@ -67,6 +145,21 @@ document.querySelectorAll(".options").forEach(group => {
   });
 });
 
+prevMonth.addEventListener("click", () => {
+  calendarDate.setMonth(calendarDate.getMonth() - 1);
+  renderCalendar();
+});
+
+nextMonth.addEventListener("click", () => {
+  calendarDate.setMonth(calendarDate.getMonth() + 1);
+  renderCalendar();
+});
+
+otherDayBtn.addEventListener("click", () => {
+  answers.dia = "Otro día / lo hablamos";
+  showStep(4);
+});
+
 document.getElementById("copyBtn").addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText(document.getElementById("message").value);
@@ -83,6 +176,7 @@ document.getElementById("restartBtn").addEventListener("click", () => {
   answers.dia = "";
   answers.horario = "";
   answers.respuesta = "";
+  calendarDate = new Date();
   showStep(1);
 });
 

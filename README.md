@@ -1,6 +1,7 @@
-# Encuesta para Micaela - Responsive
+# Encuesta para Micaela con calendario
 
-Versión optimizada para iOS y Android.
+Versión responsive para iOS y Android, con calendario real en la pregunta:
+"¿Qué día te queda mejor?"
 
 ## Archivos
 - index.html

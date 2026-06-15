@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Una salida pendiente | Micaela</title>
+  <meta name="description" content="Una invitación especial para Micaela Durán." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-orb orb-one"></div>
+  <div class="bg-orb orb-two"></div>
+
+  <header class="hero">
+    <nav class="nav">
+      <div class="brand">Invitación especial</div>
+      <a class="nav-btn" href="#elegir-plan">Elegir plan</a>
+    </nav>
+
+    <section class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Para Micaela Durán</span>
+        <h1>Como elegir una fecha parece difícil, hice una página.</h1>
+        <p>
+          Mica, cada vez que tiro un día justo tenés otro plan. Entonces esta vez
+          te dejo el calendario, algunas ideas y cero presión: elegí el día y el plan
+          que más te guste.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#calendario">Ver calendario</a>
+          <a class="secondary-btn" href="#planes">Ver planes</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="photo-frame">
+          <div class="photo-placeholder">
+            <span>Tu foto acá</span>
+            <small>Cuando me pases la imagen, la reemplazamos por Micaela.</small>
+          </div>
+        </div>
+        <div class="profile">
+          <h2>Micaela Durán</h2>
+          <p>Lic. en Turismo y Hotelería · Fashion & Design student</p>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="section intro">
+      <span class="section-tag">La propuesta</span>
+      <h2>Una salida simple, linda y sin complicarla tanto.</h2>
+      <p>
+        La idea no es interrumpirte planes, sino encontrar ese huequito perfecto:
+        café, merienda, cena, helado, paseo o algo más espontáneo. Vos elegís.
+      </p>
+    </section>
+
+    <section class="section plans" id="planes">
+      <div class="section-head">
+        <span class="section-tag">Opciones</span>
+        <h2>Planes posibles</h2>
+      </div>
+
+      <div class="plan-grid">
+        <article class="plan-card" data-plan="Café tranqui">
+          <div class="plan-icon">☕</div>
+          <h3>Café tranqui</h3>
+          <p>Para charlar sin apuro, con algo rico y buena excusa para conocernos más.</p>
+          <button>Elegir este</button>
+        </article>
+
+        <article class="plan-card" data-plan="Cena linda">
+          <div class="plan-icon">🍝</div>
+          <h3>Cena linda</h3>
+          <p>Un lugar con buena comida, lindo ambiente y conversación sin mirar el reloj.</p>
+          <button>Elegir este</button>
+        </article>
+
+        <article class="plan-card" data-plan="Helado y paseo">
+          <div class="plan-icon">🍦</div>
+          <h3>Helado y paseo</h3>
+          <p>Algo simple, relajado y perfecto para una tarde/noche sin tanta formalidad.</p>
+          <button>Elegir este</button>
+        </article>
+
+        <article class="plan-card" data-plan="Plan sorpresa">
+          <div class="plan-icon">✨</div>
+          <h3>Plan sorpresa</h3>
+          <p>Vos elegís el día, yo me encargo del plan. Prometo que sea buena idea.</p>
+          <button>Elegir este</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section calendar-section" id="calendario">
+      <div class="section-head">
+        <span class="section-tag">Calendario</span>
+        <h2>Elegí el día que sí puedas</h2>
+        <p>Marcá una fecha tentativa. Después lo cerramos por WhatsApp.</p>
+      </div>
+
+      <div class="calendar-wrap">
+        <div class="calendar-top">
+          <button id="prevMonth" aria-label="Mes anterior">‹</button>
+          <h3 id="monthLabel"></h3>
+          <button id="nextMonth" aria-label="Mes siguiente">›</button>
+        </div>
+        <div class="weekdays">
+          <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
+        </div>
+        <div class="calendar" id="calendar"></div>
+      </div>
+    </section>
+
+    <section class="section chosen" id="elegir-plan">
+      <span class="section-tag">Confirmación</span>
+      <h2>Lo que vas eligiendo</h2>
+
+      <div class="choice-box">
+        <p><strong>Plan:</strong> <span id="selectedPlan">Todavía no elegido</span></p>
+        <p><strong>Fecha:</strong> <span id="selectedDate">Todavía no elegida</span></p>
+      </div>
+
+      <div class="note-card">
+        <h3>Mensaje listo para mandar</h3>
+        <textarea id="messageBox" readonly></textarea>
+        <div class="confirm-actions">
+          <button class="copy-btn" id="copyMessage">Copiar mensaje</button>
+          <a class="whatsapp-btn" id="whatsappLink" target="_blank" rel="noopener">Mandar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final">
+      <h2>Prometo no preguntar “¿y el jueves?” otra vez.</h2>
+      <p>Ahora lo dejamos en tus manos: día, plan y listo. Yo feliz de acompañarte.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Hecho con una excusa: invitarte a salir.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
